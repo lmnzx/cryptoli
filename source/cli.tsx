@@ -4,6 +4,7 @@ import Conf from "conf";
 import { render } from "ink";
 import meow from "meow";
 import React from "react";
+import Coin from "./components/Coin";
 import Default from "./components/Default";
 import News from "./components/News";
 
@@ -35,18 +36,17 @@ import News from "./components/News";
 	);
 
 	const config = new Conf();
-	// Default Condition
-	// console.log("cli", config.path);
 
+	// Default Condition
 	if (config.get("currency") === undefined) {
 		config.set("currency", "USD");
 	}
 
 	if (
-		cli.flags.currency !== config.get("currency") &&
-		cli.flags.currency !== undefined
+		cli.flags.currency !== undefined &&
+		cli.flags.currency.toUpperCase() !== config.get("currency")
 	) {
-		config.set("currency", cli.flags.currency);
+		config.set("currency", cli.flags.currency.toUpperCase());
 	}
 
 	cli.flags.help && cli.help;
@@ -54,4 +54,6 @@ import News from "./components/News";
 	cli.input.length === 0 && render(<Default />);
 
 	cli.input.includes("news") && render(<News />);
+
+	cli.input.includes("info") && render(<Coin coin={cli.input[1] as string} />);
 })();

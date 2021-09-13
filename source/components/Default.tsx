@@ -6,7 +6,6 @@ import Conf from "conf";
 
 const config = new Conf();
 
-// const Default: FC<{ currency: string }> = ({ currency }) => {
 const Default: FC = () => {
 	const [data, setData] = useState([] as any);
 	const [loading, setLoading] = useState(true);

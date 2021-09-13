@@ -8,7 +8,7 @@ const News: FC = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		axios(`https://api.coinstats.app/public/v1/news/handpicked?skip=0&limit=5`)
+		axios(`https://api.coinstats.app/public/v1/news/trending?limit=4`)
 			.then((response) => {
 				setData(response.data.news);
 			})
@@ -30,6 +30,7 @@ const News: FC = () => {
 
 	return (
 		<>
+			<Text bold>Popular Crypto News</Text>
 			{data.map((article: any) => (
 				<Box
 					key={article.id}
