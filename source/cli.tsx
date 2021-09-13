@@ -12,14 +12,20 @@ import News from "./components/News";
 	const cli = meow(
 		chalk`
 		Usage
-		$ cryptoli {green.bold input}
+		$ cryptoli {green commands} {blue options}
 
-		Options
-		--help  Your name
+		Commands
+		<nothing>		{green Returns top 5 crypocurrencies with info}
+		info <name of coin>		{green Detail info about that coin}
+		news 		{green Popular Crypto News}
+
+		Flags
+		-h --help		{blue Help}
+		-c --currency		{blue Set the default currency}
 
 		Examples
-		$ cryptoli --name=Jane
-		Hello, Jane
+		$ cryptoli -c USD
+		$ cryptoli info bitcoin
 		`,
 		{
 			flags: {
