@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Newline, Text } from "ink";
+import { Box, Newline, Text } from "ink";
 import axios from "axios";
 import Spinner from "ink-spinner";
 
@@ -32,9 +32,43 @@ const Default: FC = () => {
 
 	return (
 		<>
-			{/* <Newline /> */}
-			<Text>{data[0].id}</Text>
-			{/* {console.log(data[0].id)} */}
+			<Box borderStyle="round" borderColor="blue" flexDirection="column">
+				<Box paddingBottom={1} justifyContent="center">
+					<Box width="30%">
+						<Text>Name</Text>
+					</Box>
+
+					<Box width="10%">
+						<Text>Symbol</Text>
+					</Box>
+
+					<Box width="35%">
+						<Text>Price</Text>
+					</Box>
+					<Box width="25%">
+						<Text>24h Change</Text>
+					</Box>
+				</Box>
+				{data.map((coin: any) => (
+					<Box key={coin.id}>
+						<Box width="30%">
+							<Text color="blue">{coin.id}</Text>
+						</Box>
+
+						<Box width="10%">
+							<Text color="cyan">{coin.symbol}</Text>
+						</Box>
+
+						<Box width="35%">
+							<Text color="green">{coin.price}</Text>
+						</Box>
+
+						<Box width="25%">
+							<Text color="green">{coin.priceChange1d}</Text>
+						</Box>
+					</Box>
+				))}
+			</Box>
 		</>
 	);
 };
