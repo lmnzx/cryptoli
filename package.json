@@ -44,6 +44,7 @@
 		"@ava/typescript": "^2.0.0",
 		"@sindresorhus/tsconfig": "^2.0.0",
 		"@types/ink-box": "^1.0.1",
+		"@types/node": "^16.9.1",
 		"@types/react": "^17.0.20",
 		"ava": "^3.15.0",
 		"chalk": "^4.1.2",
