@@ -1,6 +1,6 @@
 {
 	"name": "cryptoli",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"license": "MIT",
 	"bin": "dist/cli.js",
 	"engines": {
@@ -13,11 +13,13 @@
 		"test": "xo && ava"
 	},
 	"files": [
-		"dist/cli.js"
+		"dist/*"
 	],
 	"dependencies": {
 		"axios": "^0.21.4",
+		"conf": "^10.0.2",
 		"ink": "^3.0.9",
+		"ink-link": "^2.0.0",
 		"ink-spinner": "^4.0.2",
 		"meow": "^9.0.0",
 		"react": "^16.14.0"
@@ -50,6 +52,6 @@
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"ink-testing-library": "^2.1.0",
 		"typescript": "^4.4.2",
-		"xo": "^0.39.1"
+		"xo": "^0.44.0"
 	}
 }

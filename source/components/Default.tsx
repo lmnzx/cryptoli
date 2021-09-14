@@ -2,15 +2,20 @@ import React, { FC, useEffect, useState } from "react";
 import { Box, Newline, Text } from "ink";
 import axios from "axios";
 import Spinner from "ink-spinner";
+import Conf from "conf";
 
-const baseURL = `https://api.coinstats.app/public/v1/coins/?limit=5`;
+const config = new Conf();
 
 const Default: FC = () => {
 	const [data, setData] = useState([] as any);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		axios(baseURL)
+		axios(
+			`https://api.coinstats.app/public/v1/coins/?limit=5&currency=${config.get(
+				"currency"
+			)}`
+		)
 			.then((response) => {
 				setData(response.data.coins);
 			})
@@ -33,7 +38,7 @@ const Default: FC = () => {
 	return (
 		<>
 			<Box borderStyle="round" borderColor="blue" flexDirection="column">
-				<Box paddingBottom={1} justifyContent="center">
+				<Box paddingBottom={1}>
 					<Box width="30%">
 						<Text>Name</Text>
 					</Box>
@@ -43,7 +48,7 @@ const Default: FC = () => {
 					</Box>
 
 					<Box width="35%">
-						<Text>Price</Text>
+						<Text>Price({config.get("currency")})</Text>
 					</Box>
 					<Box width="25%">
 						<Text>24h Change</Text>
@@ -64,7 +69,7 @@ const Default: FC = () => {
 						</Box>
 
 						<Box width="25%">
-							<Text color="green">{coin.priceChange1d}</Text>
+							<Text color="green">{coin.priceChange1d}%</Text>
 						</Box>
 					</Box>
 				))}
